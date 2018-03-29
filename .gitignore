@@ -1,4 +1,5 @@
 appengine/lib/**
 appengine/*.log
+appengine/client-secret.json
 **npm-debug.log
 **/node_modules/**

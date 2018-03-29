@@ -7,14 +7,19 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Set Project"
-          command: gcloud config set project $GOOGLE_PROJECT_ID
+          name: "Decrypt Keys"
+          command: openssl enc -d -a -aes-256-cbc -k $GCLOUD_ENCRYPTION_KEY -in appengine/client-secret.json.enc -out ${HOME}/gcloud-service-key.json
+      - run:
+          name: "Project settings"
+          command: |
+            gcloud --quiet components update
+            gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+            gcloud config set project $GOOGLE_PROJECT_ID
       - run:
           name: Install appengine/Python dependecies
           command: |
             cd appengine
             pip install -t lib -r requirements.txt
-            gcloud app create
             gcloud app deploy app.yaml \cron.yaml
   deploy_functions:
     docker:
