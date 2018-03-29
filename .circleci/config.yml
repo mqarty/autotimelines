@@ -12,7 +12,6 @@ jobs:
       - run:
           name: "Project settings"
           command: |
-            gcloud --quiet components update
             gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
             gcloud config set project $GOOGLE_PROJECT_ID
       - run:
