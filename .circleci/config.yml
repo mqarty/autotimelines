@@ -33,3 +33,5 @@ workflows:
     jobs:
       - deploy_cron:
           context: autotimeline
+      - deploy_functions:
+          context: autotimeline
