@@ -1,3 +1,4 @@
+appengine/.notes
 appengine/lib/**
 appengine/*.log
 appengine/client-secret.json
