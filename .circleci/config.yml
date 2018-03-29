@@ -10,17 +10,12 @@ jobs:
           name: "Set Project"
           command: gcloud config set project $GOOGLE_PROJECT_ID
       - run:
-          name: "...appengine"
-          command: cd appengine
-      - run:
-          name: "PIP install"
-          command: pip install -t lib -r requirements.txt
-      - run:
-          name: "app create?"
-          command: gcloud app create
-      - run:
-          name: "Deploy the application to App Engine"
-          command: gcloud app deploy app.yaml \cron.yaml
+          name: Install appengine/Python dependecies
+          command: |
+            cd appengine
+            pip install -t lib -r requirements.txt
+            gcloud app create
+            gcloud app deploy app.yaml \cron.yaml
   deploy_functions:
     docker:
       - image: devillex/docker-firebase
