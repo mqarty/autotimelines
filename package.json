@@ -1,0 +1,8 @@
+{
+  "name": "status-sonar",
+  "description": "Status Sonar",
+  "private": true,
+  "devDependencies": {
+    "firebase-tools": "^3.13.1"
+  }
+}
