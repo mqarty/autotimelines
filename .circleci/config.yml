@@ -25,6 +25,7 @@ jobs:
       - image: devillex/docker-firebase
     working_directory: /ws
     steps:
+      - checkout
       - run: 
           name: Firebase Configs
           command: firebase functions:config:set sparkpost.key="$SPARKPOST_API_KEY" --project $FIREBASE_PROJECT_ID
