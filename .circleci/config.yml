@@ -26,7 +26,7 @@ jobs:
     working_directory: /ws
     steps:
       - run: firebase functions:config:set sparkpost.key="$SPARKPOST_API_KEY" --project $FIREBASE_PROJECT_ID
-      - run: firebase deploy --token "$FIREBASE_TOKEN" --only functions --project $FIREBASE_PROJECT_IDfirebaes
+      - run: firebase deploy --token "$FIREBASE_TOKEN" --only functions --project $FIREBASE_PROJECT_ID
 workflows:
   version: 2
   deploy_and_deploy:
