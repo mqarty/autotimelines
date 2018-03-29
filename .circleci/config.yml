@@ -7,10 +7,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Decrypt Keys"
+          name: Decrypt Keys
           command: openssl enc -d -a -aes-256-cbc -k $GCLOUD_ENCRYPTION_KEY -in appengine/client-secret.json.enc -out ${HOME}/gcloud-service-key.json
       - run:
-          name: "Project settings"
+          name: Project settings
           command: |
             gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
             gcloud config set project $GOOGLE_PROJECT_ID
@@ -25,8 +25,14 @@ jobs:
       - image: devillex/docker-firebase
     working_directory: /ws
     steps:
-      - run: firebase functions:config:set sparkpost.key="$SPARKPOST_API_KEY" --project $FIREBASE_PROJECT_ID
-      - run: firebase deploy --token "$FIREBASE_TOKEN" --only functions --project $FIREBASE_PROJECT_ID
+      - run: 
+          name: Firebase Configs
+          command: firebase functions:config:set sparkpost.key="$SPARKPOST_API_KEY" --project $FIREBASE_PROJECT_ID
+      - run: 
+          name: Firebase Deploy
+          command: |
+            cd firebase
+            firebase deploy --token "$FIREBASE_TOKEN" --only functions --project $FIREBASE_PROJECT_ID
 workflows:
   version: 2
   deploy_and_deploy:
