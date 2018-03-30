@@ -22,16 +22,13 @@ jobs:
             gcloud app deploy app.yaml \cron.yaml
   deploy_functions:
     docker:
-      - image: datagovsg/python-node
+      - image: mqarty/docker-firebase
     working_directory: /ws
     steps:
       - checkout
       - run: 
           name: Firebase Config and Deploy
           command: |
-            npm install -g firebase-tools@latest
-            npm install -g firebase-functions@latest
-            npm install -g firebase-admin@latest
             cd functions
             npm install
             firebase use $FIREBASE_PROJECT_ID
