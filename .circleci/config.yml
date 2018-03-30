@@ -30,8 +30,8 @@ jobs:
           name: Firebase Config and Deploy
           command: |
             npm install -g firebase
-            npm install -g firebase-admin@latest
             npm install -g firebase-functions@latest
+            npm install -g firebase-admin@latest
             firebase use $FIREBASE_PROJECT_ID
             firebase functions:config:set sparkpost.key="$SPARKPOST_API_KEY" --token "$FIREBASE_TOKEN"
             firebase deploy --only functions --token "$FIREBASE_TOKEN"
