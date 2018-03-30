@@ -33,6 +33,7 @@ jobs:
           name: Firebase Deploy
           command: |
             cd functions
+            npm install
             firebase deploy --token "$FIREBASE_TOKEN" --only functions --project $FIREBASE_PROJECT_ID
 workflows:
   version: 2
