@@ -19,7 +19,7 @@ jobs:
           command: |
             cd appengine
             pip install -t lib -r requirements.txt
-            gcloud app deploy app.yaml \cron.yaml --version=1.0
+            gcloud app deploy app.yaml \cron.yaml --version=1-0
   deploy_functions:
     docker:
       - image: datagovsg/python-node
