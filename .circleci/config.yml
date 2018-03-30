@@ -30,7 +30,7 @@ jobs:
           name: Firebase Config and Deploy
           command: |
             cd functions && npm install
-            firebase functions:config:set sparkpost.key="$SPARKPOST_API_KEY" --project $FIREBASE_PROJECT_ID
+            firebase functions:config:set sparkpost.key="$SPARKPOST_API_KEY" --project $FIREBASE_PROJECT_ID  --token "$FIREBASE_TOKEN"
             firebase deploy --token "$FIREBASE_TOKEN" --only functions --project $FIREBASE_PROJECT_ID
 workflows:
   version: 2
