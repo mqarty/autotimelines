@@ -22,7 +22,7 @@ jobs:
             gcloud app deploy app.yaml \cron.yaml
   deploy_functions:
     docker:
-      - image: mqarty/docker-firebase
+      - image: datagovsg/python-node
     working_directory: /ws
     steps:
       - checkout
