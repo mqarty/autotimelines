@@ -31,6 +31,7 @@ jobs:
           command: |
             firebase functions:config:set sparkpost.key="$SPARKPOST_API_KEY" --project $FIREBASE_PROJECT_ID
             cd functions
+            npm i --save firebase-admin@latest
             npm i --save firebase-functions@latest
             firebase deploy --token "$FIREBASE_TOKEN" --only functions --project $FIREBASE_PROJECT_ID
 workflows:
