@@ -29,7 +29,6 @@ jobs:
       - run: 
           name: Firebase Config and Deploy
           command: |
-            npm install -g firebase-tools@latest
             npm install -g firebase-functions@latest
             npm install -g firebase-admin@latest
             cd functions
