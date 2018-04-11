@@ -22,7 +22,7 @@ jobs:
             gcloud app deploy app.yaml \cron.yaml --version=1-0
   deploy_functions:
     docker:
-      - image: mqarty/docker-firebase
+      - image: mqarty/docker-firebase:0.0.1
     working_directory: /ws
     steps:
       - checkout
