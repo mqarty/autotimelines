@@ -20,19 +20,24 @@ jobs:
             cd appengine
             pip install -t lib -r requirements.txt
             gcloud app deploy app.yaml \cron.yaml --version=1-0
-  deploy_functions:
+  deploy-functions:
     docker:
       - image: mqarty/docker-firebase:latest
-    working_directory: /ws
     steps:
-      - checkout
-      - run: 
-          name: Firebase Config and Deploy
+      - run:
+          name: Firebase Setup
           command: |
             cd functions
             npm install
+      - run:
+          name: Firebase set config
+          command: |
             firebase use $FIREBASE_PROJECT_ID
             firebase functions:config:set sparkpost.key="$SPARKPOST_API_KEY" --token "$FIREBASE_TOKEN"
+      - run:
+          name: Firebase Deploy
+          command: |
+            firebase use $FIREBASE_PROJECT_ID
             firebase deploy --only functions --token "$FIREBASE_TOKEN"
 workflows:
   version: 2
