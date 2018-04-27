@@ -20,7 +20,7 @@ jobs:
             cd appengine
             pip install -t lib -r requirements.txt
             gcloud app deploy app.yaml \cron.yaml --version=1-0
-  deploy-functions:
+  deploy_functions:
     docker:
       - image: mqarty/docker-firebase:latest
     steps:
