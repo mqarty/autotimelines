@@ -23,6 +23,7 @@ jobs:
   deploy_functions:
     docker:
       - image: mqarty/docker-firebase:latest
+    working_directory: /ws
     steps:
       - run:
           name: Firebase Setup
